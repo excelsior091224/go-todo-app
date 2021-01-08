@@ -1,0 +1,17 @@
+{% extends "../layout.html" %}
+
+{% block js %}
+<script src="/js/module/form.js"></script>
+{% endblock %}
+
+{% block title %}
+編集 | {{ block.Super }}
+{{ Task.Title }} | {{ block.Super }}
+{% endblock %}
+
+{% block content %}
+<h2>編集</h2>
+<div class="">
+    {% include "./_form.html" %}
+</div>
+{% endblock %}

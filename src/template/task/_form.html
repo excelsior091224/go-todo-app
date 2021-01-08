@@ -1,0 +1,42 @@
+<form class="task-form l-row" name="task-form">
+    <ul class="task-form__errors"></ul>
+    <div class="task-form__error-tmpl" style="display: none;">
+        <li class="task-form__error"></li>
+    </div>
+
+    <div class="task-form__title">
+        <label for="form-title" class="task-form__label">タイトル</label>
+        <input type="text" class="task-form__input" name="title" id="form-title" value="{{ Task.Title }}">
+    </div>
+
+    <div class="task-form__text">
+        <label for="form-text" class="task-form__label task-form__label--text">本文</label>
+        <textarea name="text" id="form-text" class="task-form__input task-form__input--text">{{ Task.Text }}</textarea>
+    </div>
+
+    <div class="task-form__select">
+        <label for="form-status" class="task-form__label task-form__label--status">状態</label>
+        <select name="status" id="form-status" class="task-form__select task-form__select--status">
+            {% if Task.Status == 0 %}
+            <option value="0" selected>未着手</option>
+            {% else %}
+            <option value="0">未着手</option>
+            {% endif %}
+            {% if Task.Status == 1 %}
+            <option value="1" selected>実行中</option>
+            {% else %}
+            <option value="1">実行中</option>
+            {% endif %}
+            {% if Task.Status == 2 %}
+            <option value="2" selected>完了</option>
+            {% else %}
+            <option value="2">完了</option>
+            {% endif %}
+        </select>
+    </div>
+
+    <div class="task-form__footer">
+        <button class="task-form__cancel btn--info">キャンセル</button>
+        <button class="task-form__save btn--primary" id="task-form__save">保存</button>
+    </div>
+</form>

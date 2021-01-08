@@ -1,0 +1,31 @@
+{% extends "../layout.html" %}
+
+{% block js %}
+<script src="/js/task/show.js"></script>
+{% endblock %}
+
+{% block title %}
+{{ Task.Title }} | {{ block.Super }}
+{% endblock %}
+
+{% block content %}
+<h2>{{ Task.Title }}</h2>
+<ul>
+    <li>
+        {% if Task.Status == 1 %}
+        実行中
+        {% elif Task.Status == 2 %}
+        完了
+        {% else %}
+        未着手
+        {% endif %}
+    </li>
+    <li>{{ Task.Text }}</li>
+    {% if Task.Updated > Task.Created %}
+    <li>更新:{{ Task.Updated }}</li>
+    {% endif %}
+    <li>作成:{{ Task.Created }}</li>
+</ul>
+<a class="task__edit btn--info" href="/tasks/{{ Task.ID }}/edit">編集</a>
+<button class="tasks__item-delete" data-id="{{ Task.ID }}">削除</button>
+{% endblock %}
